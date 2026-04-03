@@ -9,7 +9,7 @@
   [functions.timeout]
     default = 26
   external_node_modules = [
-    "sqlite3",
+    "better-sqlite3",
     "nodemailer",
     "@netlify/functions",
   ]
