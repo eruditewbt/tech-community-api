@@ -1,10 +1,20 @@
 [build]
-  base = "tech-community-api"
   publish = "public"
-  functions = "netlify/functions"
+  command = "npm install"
+  environment = { NODE_VERSION = "18" }
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+  [functions.timeout]
+    default = 26
+  external_node_modules = [
+    "sqlite3",
+    "nodemailer",
+    "@netlify/functions",
+  ]
 
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/:splat"
   status = 200
-  force = true
