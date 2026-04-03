@@ -1,0 +1,15 @@
+{
+  "name": "tech-community-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Netlify functions + SQLite backend for the EruditeWBT Tech Community platform.",
+  "main": "index.js",
+  "scripts": {
+    "check": "node -e \"console.log('tech-community-api ready')\""
+  },
+  "dependencies": {
+    "@netlify/functions": "^3.1.0",
+    "better-sqlite3": "^11.8.1",
+    "nodemailer": "^6.10.0"
+  }
+}
