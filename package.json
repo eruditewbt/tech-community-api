@@ -2,7 +2,7 @@
   "name": "tech-community-api",
   "version": "1.0.0",
   "private": true,
-  "description": "Netlify functions + SQLite backend for the EruditeWBT Tech Community platform.",
+  "description": "Netlify functions + SQLite backend for the Tech Community platform.",
   "main": "index.js",
   "scripts": {
     "check": "node -e \"console.log('tech-community-api ready')\""

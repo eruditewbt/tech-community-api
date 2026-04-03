@@ -1,7 +1,7 @@
 [build]
   publish = "public"
   command = "npm install"
-  environment = { NODE_VERSION = "18" }
+  environment = { NODE_VERSION = "20" }
 
 [functions]
   directory = "netlify/functions"

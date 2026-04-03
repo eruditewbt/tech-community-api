@@ -11,10 +11,10 @@ module.exports = {
   DB_PATH,
   SEED_DATA_PATH,
   ADMIN_TOKEN: process.env.ADMIN_TOKEN || "",
-  CONTACT_TO_EMAIL: process.env.CONTACT_TO_EMAIL || "erudite-wbt@outlook.com",
+  CONTACT_TO_EMAIL: process.env.CONTACT_TO_EMAIL || "",
   OUTLOOK_SMTP_USER: process.env.OUTLOOK_SMTP_USER || "",
   OUTLOOK_SMTP_PASS: process.env.OUTLOOK_SMTP_PASS || "",
   MAIL_FROM_EMAIL: process.env.MAIL_FROM_EMAIL || process.env.OUTLOOK_SMTP_USER || "",
-  MAIL_FROM_NAME: process.env.MAIL_FROM_NAME || "EruditeWBT Tech Community",
+  MAIL_FROM_NAME: process.env.MAIL_FROM_NAME || "",
   SITE_ORIGIN: process.env.SITE_ORIGIN || "*",
 };

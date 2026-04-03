@@ -28,7 +28,7 @@ async function sendContactMail(input) {
     },
   });
 
-  const fromName = MAIL_FROM_NAME || "EruditeWBT Tech Community";
+  const fromName = MAIL_FROM_NAME || " Tech Community";
   const fromEmail = MAIL_FROM_EMAIL || OUTLOOK_SMTP_USER;
   const replyTo = input.email || fromEmail;
 

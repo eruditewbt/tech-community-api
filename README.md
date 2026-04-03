@@ -1,13 +1,13 @@
 # Tech Community API
 
-Netlify Functions backend for the EruditeWBT Tech Community platform.
+Netlify Functions backend for the Tech Community platform.
 
 ## What It Does
 
 - serves live community stats
 - stores intents, contact messages, and activity logs
 - provides admin dashboard endpoints
-- sends contact email to `erudite-wbt@outlook.com`
+- sends contact email to me
 - uses SQLite stored at `/tmp/tech-community.sqlite` by default on Netlify
 
 ## Endpoints
@@ -26,9 +26,9 @@ Netlify Functions backend for the EruditeWBT Tech Community platform.
 - `OUTLOOK_SMTP_HOST` default `smtp.office365.com`
 - `OUTLOOK_SMTP_PORT` default `587`
 - `OUTLOOK_SMTP_SECURE` default `false`
-- `OUTLOOK_SMTP_USER` default `erudite-wbt@outlook.com`
+- `OUTLOOK_SMTP_USER` default me
 - `OUTLOOK_SMTP_PASS`
-- `MAIL_TO` default `erudite-wbt@outlook.com`
+- `MAIL_TO` default `my emai`
 - `MAIL_FROM` optional sender override
 - `CORS_ORIGIN` optional CORS origin override
 
