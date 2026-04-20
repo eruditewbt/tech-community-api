@@ -1,7 +1,7 @@
 "use strict";
 
 const { json, handleOptions, requireAdmin, withErrorBoundary } = require("../../src/http");
-const { listRecent, getCounts } = require("../../src/db");
+const { listRecent, getCounts, listCommunityUsersDetailed } = require("../../src/db");
 const { buildLiveData } = require("../../src/live-data");
 
 exports.handler = withErrorBoundary(async (event) => {
@@ -27,5 +27,6 @@ exports.handler = withErrorBoundary(async (event) => {
     activities: listRecent("activities", 20),
     intents: listRecent("intents", 20),
     contacts: listRecent("contacts", 20),
+    communityUsers: listCommunityUsersDetailed(20),
   });
 });
