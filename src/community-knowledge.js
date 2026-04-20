@@ -73,7 +73,7 @@ const COMMUNITY_LINKS = {
   hackclub: "https://github.com/eruditewbt/HACKCLUB",
   dart: "https://github.com/eruditewbt/DARTANDFLUTTER",
   visuals: "https://github.com/eruditewbt/VISUALSANDHCI",
-  email: "mailto:erudite-wbt@outlook.com",
+  email: "mailto:${encodeURIComponent(process.env.MAIL_FROM_EMAIL || '' )}",
 };
 
 function getFlow() {
