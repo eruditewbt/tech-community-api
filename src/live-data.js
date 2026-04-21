@@ -14,6 +14,9 @@ function readSeedData() {
       currentSprint: "Not set",
       ideasInVoting: 0,
       proofFeed: [],
+      nextActivities: [],
+      blogPosts: [],
+      deployedProducts: [],
     };
   }
 }
@@ -40,6 +43,9 @@ function buildLiveData() {
     currentSprint: seed.currentSprint ?? "Not set",
     ideasInVoting: seed.ideasInVoting ?? 0,
     proofFeed: Array.isArray(seed.proofFeed) ? seed.proofFeed : [],
+    nextActivities: Array.isArray(seed.nextActivities) ? seed.nextActivities : [],
+    blogPosts: Array.isArray(seed.blogPosts) ? seed.blogPosts : [],
+    deployedProducts: Array.isArray(seed.deployedProducts) ? seed.deployedProducts : [],
     counts,
     recentActivities,
     updatedAt: new Date().toISOString(),

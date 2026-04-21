@@ -65,6 +65,8 @@ const COMMUNITY_LINKS = {
   discord: "https://discord.gg/8e4bQNknA",
   youtube: "https://www.youtube.com/@eruditewbt",
   telegram: "https://t.me/coding_session_by_eruditewbt",
+  activities: "https://eruditewbt.github.io/Tech_Community_by_EruditeWBT/activities.html",
+  blog: "https://eruditewbt.github.io/Tech_Community_by_EruditeWBT/blog.html",
   intro: "https://github.com/eruditewbt/Intro_to_Computing_and_Programming",
   introSite: "https://eruditewbt.github.io/Intro_to_Computing_and_Programming/",
   techCommunity: "https://github.com/eruditewbt/Tech_Community_by_EruditeWBT",
@@ -73,7 +75,12 @@ const COMMUNITY_LINKS = {
   hackclub: "https://github.com/eruditewbt/HACKCLUB",
   dart: "https://github.com/eruditewbt/DARTANDFLUTTER",
   visuals: "https://github.com/eruditewbt/VISUALSANDHCI",
-  email: "mailto:${encodeURIComponent(process.env.MAIL_FROM_EMAIL || '' )}",
+  calls: "https://eruditewbt.github.io/Tech_Community_by_EruditeWBT/calls-and-polls.html",
+  pdfReader: "https://pdf-reader-77ef58.web.app/",
+  examManager: "https://examination-manager.web.app",
+  taskManager: "https://task-master-d0262.web.app",
+  netlifyApps: "https://eruditewbt.netlify.app/",
+  email: "mailto:erudite-wbt@outlook.com",
 };
 
 function getFlow() {
@@ -195,6 +202,57 @@ function buildSuggestions(profile = {}, questionText = "") {
       "The wider collaboration hub for projects, ideas, progress, roles, and community operations.",
       COMMUNITY_LINKS.techCommunity,
       "repo"
+    );
+  }
+
+  if (hasAny(haystack, ["call", "meeting", "poll", "schedule", "activity", "video first", "next activity"])) {
+    push(
+      "Next Activities",
+      "See the current role-based call planning, polls, and media priorities so you can join the right decision flow.",
+      COMMUNITY_LINKS.activities,
+      "page"
+    );
+    push(
+      "Calls and Polls",
+      "Open the role-specific poll and call structure so you can vote, prepare, and join the right treatment lane.",
+      COMMUNITY_LINKS.calls,
+      "page"
+    );
+  }
+
+  if (hasAny(haystack, ["blog", "post", "guidance", "how do i start", "confused", "path", "monetize", "monetization", "ai", "automation"])) {
+    push(
+      "Helpful Blog Posts",
+      "Use the guidance layer for pathfinding, tech-in-your-field, effective learning, monetization, and AI/automation direction.",
+      COMMUNITY_LINKS.blog,
+      "page"
+    );
+  }
+
+  if (hasAny(haystack, ["read", "document", "pdf", "analyze", "exam", "cbt", "task", "productivity", "tool", "app", "web app"])) {
+    push(
+      "Read And Analyze",
+      "Use the deployed reading and analysis tool for document extraction, notes, questions, and AI-assisted chat.",
+      COMMUNITY_LINKS.pdfReader,
+      "product"
+    );
+    push(
+      "Examination Manager",
+      "Use the CBT and exam-prep system for tests, generated questions, and practice workflows.",
+      COMMUNITY_LINKS.examManager,
+      "product"
+    );
+    push(
+      "Task Manager",
+      "Use the deployed task tool to start, stop, pause, continue, and share productivity flows.",
+      COMMUNITY_LINKS.taskManager,
+      "product"
+    );
+    push(
+      "EruditeWBT apps hub",
+      "See the deployed Netlify app surface for more live products and experiments.",
+      COMMUNITY_LINKS.netlifyApps,
+      "product"
     );
   }
 
