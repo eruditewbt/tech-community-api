@@ -82,9 +82,27 @@ function requireAdmin(event) {
 }
 
 function handleOptions(event) {
+  // if (event && event.httpMethod === "OPTIONS") {
+  //   return ok(200, { ok: true });
+  // }
+  // return null;
+  // 1. Define the allowed origin
+
+  const allowedOrigin = "https://eruditewbt.github.io";
+
+  // 2. Handle Preflight Requests (OPTIONS)
   if (event && event.httpMethod === "OPTIONS") {
-    return ok(200, { ok: true });
+    return {
+      statusCode: 204, // No Content
+      headers: {
+        "Access-Control-Allow-Origin": allowedOrigin,
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+      },
+      body: "",
+    };
   }
+  
   return null;
 }
 

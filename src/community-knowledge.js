@@ -80,7 +80,7 @@ const COMMUNITY_LINKS = {
   examManager: "https://examination-manager.web.app",
   taskManager: "https://task-master-d0262.web.app",
   netlifyApps: "https://eruditewbt.netlify.app/",
-  email: "mailto:erudite-wbt@outlook.com",
+  email: ```mailto:{process.env.EMAIL} ```,
 };
 
 function getFlow() {

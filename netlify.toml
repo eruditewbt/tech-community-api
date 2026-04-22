@@ -18,3 +18,10 @@
   from = "/api/*"
   to = "/.netlify/functions/:splat"
   status = 200
+
+[[headers]]
+  for = "/api/*" # This path should match your function endpoints
+  [headers.values]
+    Access-Control-Allow-Origin = "https://eruditewbt.github.io"
+    Access-Control-Allow-Headers = "Content-Type, Authorization"
+    Access-Control-Allow-Methods = "GET, POST, OPTIONS"
