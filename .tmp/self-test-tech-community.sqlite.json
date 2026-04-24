@@ -1,0 +1,118 @@
+{
+  "counters": {
+    "activities": 0,
+    "intents": 0,
+    "contacts": 0,
+    "community_users": 1,
+    "onboarding_answers": 7,
+    "user_questions": 1
+  },
+  "activities": [],
+  "intents": [],
+  "contacts": [],
+  "community_users": [
+    {
+      "id": 1,
+      "session_id": "self_test_session",
+      "email": "tester@example.com",
+      "name": "Tester",
+      "domain": "education",
+      "current_goal": "Join a project",
+      "skill_level": "Early beginner",
+      "repo_interest": "HACKCLUB",
+      "source": "self-test",
+      "created_at": "2026-04-24T17:48:53.640Z",
+      "updated_at": "2026-04-24T17:48:53.697Z"
+    }
+  ],
+  "onboarding_answers": [
+    {
+      "id": 1,
+      "user_id": 1,
+      "session_id": "self_test_session",
+      "question_key": "domain",
+      "question_label": "What field or domain are you coming from?",
+      "answer_text": "education",
+      "page": "/docs/index.html",
+      "created_at": "2026-04-24T17:48:53.663Z",
+      "updated_at": "2026-04-24T17:48:53.663Z"
+    },
+    {
+      "id": 2,
+      "user_id": 1,
+      "session_id": "self_test_session",
+      "question_key": "email",
+      "question_label": "What email should we use to follow up with you?",
+      "answer_text": "tester@example.com",
+      "page": "/docs/index.html",
+      "created_at": "2026-04-24T17:48:53.676Z",
+      "updated_at": "2026-04-24T17:48:53.676Z"
+    },
+    {
+      "id": 3,
+      "user_id": 1,
+      "session_id": "self_test_session",
+      "question_key": "name",
+      "question_label": "What should we call you?",
+      "answer_text": "Tester",
+      "page": "/docs/index.html",
+      "created_at": "2026-04-24T17:48:53.683Z",
+      "updated_at": "2026-04-24T17:48:53.683Z"
+    },
+    {
+      "id": 4,
+      "user_id": 1,
+      "session_id": "self_test_session",
+      "question_key": "goal",
+      "question_label": "What do you want right now?",
+      "answer_text": "Join a project",
+      "page": "/docs/index.html",
+      "created_at": "2026-04-24T17:48:53.688Z",
+      "updated_at": "2026-04-24T17:48:53.688Z"
+    },
+    {
+      "id": 5,
+      "user_id": 1,
+      "session_id": "self_test_session",
+      "question_key": "skill_level",
+      "question_label": "How would you describe your current level?",
+      "answer_text": "Early beginner",
+      "page": "/docs/index.html",
+      "created_at": "2026-04-24T17:48:53.690Z",
+      "updated_at": "2026-04-24T17:48:53.690Z"
+    },
+    {
+      "id": 6,
+      "user_id": 1,
+      "session_id": "self_test_session",
+      "question_key": "repo_interest",
+      "question_label": "Which repo or path feels closest to what you need?",
+      "answer_text": "HACKCLUB",
+      "page": "/docs/index.html",
+      "created_at": "2026-04-24T17:48:53.695Z",
+      "updated_at": "2026-04-24T17:48:53.695Z"
+    },
+    {
+      "id": 7,
+      "user_id": 1,
+      "session_id": "self_test_session",
+      "question_key": "question",
+      "question_label": "What are you trying to achieve, or what do you need help with first?",
+      "answer_text": "I want to work on automation and maybe help with task manager.",
+      "page": "/docs/index.html",
+      "created_at": "2026-04-24T17:48:53.698Z",
+      "updated_at": "2026-04-24T17:48:53.698Z"
+    }
+  ],
+  "user_questions": [
+    {
+      "id": 1,
+      "user_id": 1,
+      "session_id": "self_test_session",
+      "question_text": "I want to work on automation and maybe help with task manager.",
+      "answer_summary": "Best first move: start with Join Discord. For your situation, the most relevant working area looks like Tech Community by EruditeWBT -> docs/ and community_guides/. Learn from docs/index.html for the platform overview and docs/learn.html to choose a learning path first, then ask for access if you need to go deeper into private build lanes. If you want to work on Task Manager, start around task_manager/lib and task_manager/functions and review capability.md and ARCHITECTURE_GUIDE.md.",
+      "page": "/docs/index.html",
+      "created_at": "2026-04-24T17:48:53.700Z"
+    }
+  ]
+}

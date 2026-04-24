@@ -28,5 +28,5 @@ exports.handler = withErrorBoundary(async (event) => {
     intents: listRecent("intents", 20),
     contacts: listRecent("contacts", 20),
     communityUsers: listCommunityUsersDetailed(20),
-  });
+  }, 200, event);
 });

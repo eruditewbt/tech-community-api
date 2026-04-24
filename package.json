@@ -5,7 +5,8 @@
   "description": "Netlify functions + SQLite backend for the Tech Community platform.",
   "main": "index.js",
   "scripts": {
-    "check": "node -e \"console.log('tech-community-api ready')\""
+    "check": "node -e \"console.log('tech-community-api ready')\"",
+    "test:local": "node scripts/self-test.js"
   },
   "dependencies": {
     "@netlify/functions": "^3.1.0",

@@ -6,6 +6,7 @@ const {
   parseBody,
   handleOptions,
   requireAdmin,
+  methodOf,
   cleanText,
   cleanOptionalEmail,
   withErrorBoundary,
@@ -17,7 +18,17 @@ const {
   listOnboardingAnswersForUser,
   insertUserQuestion,
 } = require("../../src/db");
-const { getFlow, getStep, nextStepForCompletedKeys, buildSuggestions, buildReply } = require("../../src/community-knowledge");
+const {
+  getFlow,
+  getStep,
+  nextStepForCompletedKeys,
+  buildSuggestions,
+  buildReply,
+  buildWhatsAppHandoff,
+  summarizeRepoArea,
+  summarizeProjectFocus,
+  needsHumanHandoff,
+} = require("../../src/community-knowledge");
 
 function shapeUser(user) {
   if (!user) return null;
@@ -38,7 +49,7 @@ exports.handler = withErrorBoundary(async (event) => {
   const opt = handleOptions(event);
   if (opt) return opt;
 
-  if (event.httpMethod === "GET") {
+  if (methodOf(event) === "GET") {
     const auth = requireAdmin(event);
     if (!auth.ok) return auth.response;
     const body = parseBody(event);
@@ -52,10 +63,10 @@ exports.handler = withErrorBoundary(async (event) => {
       user: shapeUser(user),
       answers,
       nextStep: nextStepForCompletedKeys(completedKeys),
-    });
+    }, 200, event);
   }
 
-  if (event.httpMethod !== "POST") return error("Method not allowed.", 405);
+  if (methodOf(event) !== "POST") return error("Method not allowed.", 405, {}, event);
 
   const body = parseBody(event);
   const sessionId = cleanText(body.sessionId, 240);
@@ -63,15 +74,15 @@ exports.handler = withErrorBoundary(async (event) => {
   const answer = cleanText(body.answer, 4000);
   const page = cleanText(body.page, 400);
   if (!sessionId || !stepKey || !answer) {
-    return error("`sessionId`, `stepKey`, and `answer` are required.");
+    return error("`sessionId`, `stepKey`, and `answer` are required.", 400, {}, event);
   }
 
   const step = getStep(stepKey);
-  if (!step) return error("Unknown onboarding step.");
+  if (!step) return error("Unknown onboarding step.", 400, {}, event);
 
   if (stepKey === "email") {
     const email = cleanOptionalEmail(answer);
-    if (email === null) return error("Please enter a valid email address.");
+    if (email === null) return error("Please enter a valid email address.", 400, {}, event);
   }
 
   const profileInput = {
@@ -108,6 +119,16 @@ exports.handler = withErrorBoundary(async (event) => {
     };
     const suggestions = buildSuggestions(profileWithQuestion, profileQuestion);
     const reply = buildReply({ profile: profileWithQuestion, stepKey, answer: profileQuestion, suggestions });
+    const repoSummary = summarizeRepoArea(profileWithQuestion, profileQuestion);
+    const projectFocus = summarizeProjectFocus(profileWithQuestion, profileQuestion);
+    const handoff = buildWhatsAppHandoff(
+      {
+        ...profileWithQuestion,
+        name: user.name,
+      },
+      profileQuestion,
+      suggestions
+    );
     insertUserQuestion({
       userId: user.id,
       sessionId,
@@ -125,13 +146,17 @@ exports.handler = withErrorBoundary(async (event) => {
       nextStep: nextStepForCompletedKeys(completedKeys),
       reply,
       suggestions,
+      repoSummary,
+      projectFocus,
+      handoff,
+      humanHandoffRecommended: needsHumanHandoff(profileWithQuestion, profileQuestion),
       progress: {
         completed: completedKeys.length,
         total: getFlow().length,
       },
       mode: completedKeys.length >= getFlow().length ? "assistant" : "onboarding",
       message: "Question recorded.",
-    });
+    }, 200, event);
   }
 
   user = findCommunityUser({ sessionId, email: user.email });
@@ -147,6 +172,16 @@ exports.handler = withErrorBoundary(async (event) => {
   };
   const suggestions = buildSuggestions(profileForSuggestions, nextStep && nextStep.key === "question" ? "" : answer);
   const reply = buildReply({ profile: profileForSuggestions, stepKey, answer, suggestions });
+  const repoSummary = summarizeRepoArea(profileForSuggestions, answer);
+  const projectFocus = summarizeProjectFocus(profileForSuggestions, answer);
+  const handoff = buildWhatsAppHandoff(
+    {
+      ...profileForSuggestions,
+      name: user.name,
+    },
+    stepKey === "question" ? answer : "",
+    suggestions
+  );
 
   return json({
     ok: true,
@@ -156,11 +191,14 @@ exports.handler = withErrorBoundary(async (event) => {
     nextStep,
     reply,
     suggestions,
+    repoSummary,
+    projectFocus,
+    handoff,
     progress: {
       completed: completedKeys.length,
       total: getFlow().length,
     },
     mode: nextStep ? "onboarding" : "assistant",
     message: "Answer recorded.",
-  });
+  }, 200, event);
 });

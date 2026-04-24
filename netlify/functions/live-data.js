@@ -6,5 +6,5 @@ const { buildLiveData } = require("../../src/live-data");
 exports.handler = withErrorBoundary(async (event) => {
   const opt = handleOptions(event);
   if (opt) return opt;
-  return json(buildLiveData());
+  return json(buildLiveData(), 200, event);
 });
