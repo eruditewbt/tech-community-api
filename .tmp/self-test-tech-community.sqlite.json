@@ -1,18 +1,87 @@
 {
   "counters": {
-    "activities": 0,
+    "activities": 5,
     "intents": 0,
     "contacts": 0,
     "community_users": 1,
     "onboarding_answers": 7,
-    "user_questions": 1
+    "user_questions": 1,
+    "service_requests": 1,
+    "payment_links": 1,
+    "payments": 1,
+    "payment_proofs": 1,
+    "receipts": 2,
+    "ai_conversations": 1,
+    "ai_messages": 1
   },
-  "activities": [],
+  "activities": [
+    {
+      "id": 1,
+      "event_type": "service_request.submitted",
+      "page": "authenticated-workspace",
+      "label": "Service request submitted: Need help planning my sprint.",
+      "href": "",
+      "session_id": "",
+      "owner_uid": "self-test-user-1",
+      "referrer": "",
+      "payload_json": "{\"actor_type\":\"user\",\"visibility\":\"owner\",\"entity_type\":\"service_request\",\"entity_id\":1,\"type\":\"tutor\",\"priority\":\"high\",\"status\":\"SUBMITTED\"}",
+      "created_at": "2026-09-07T03:57:58.852Z"
+    },
+    {
+      "id": 2,
+      "event_type": "payment_link.created",
+      "page": "authenticated-workspace",
+      "label": "Payment link created: One hour tutoring session.",
+      "href": "",
+      "session_id": "",
+      "owner_uid": "self-test-user-1",
+      "referrer": "",
+      "payload_json": "{\"actor_type\":\"user\",\"visibility\":\"owner\",\"entity_type\":\"payment_link\",\"entity_id\":1,\"public_slug\":\"tutor-mtqpmxmw\",\"receipt_id\":1,\"amount\":25,\"currency\":\"USD\"}",
+      "created_at": "2026-09-07T03:57:58.862Z"
+    },
+    {
+      "id": 3,
+      "event_type": "payment.proof_submitted",
+      "page": "authenticated-workspace",
+      "label": "Payment proof submitted for One hour tutoring session.",
+      "href": "",
+      "session_id": "",
+      "owner_uid": "self-test-user-1",
+      "referrer": "",
+      "payload_json": "{\"actor_type\":\"user\",\"visibility\":\"owner\",\"entity_type\":\"payment\",\"entity_id\":1,\"payment_link_id\":1,\"proof_id\":1}",
+      "created_at": "2026-09-07T03:57:58.870Z"
+    },
+    {
+      "id": 4,
+      "event_type": "ai.message_sent",
+      "page": "authenticated-workspace",
+      "label": "Message sent in Self-test conversation.",
+      "href": "",
+      "session_id": "",
+      "owner_uid": "self-test-user-1",
+      "referrer": "",
+      "payload_json": "{\"actor_type\":\"user\",\"visibility\":\"owner\",\"entity_type\":\"ai_conversation\",\"entity_id\":1,\"link_count\":1}",
+      "created_at": "2026-09-07T03:57:58.878Z"
+    },
+    {
+      "id": 5,
+      "event_type": "ai.conversation_started",
+      "page": "authenticated-workspace",
+      "label": "AI conversation started: Self-test conversation.",
+      "href": "",
+      "session_id": "",
+      "owner_uid": "self-test-user-1",
+      "referrer": "",
+      "payload_json": "{\"actor_type\":\"user\",\"visibility\":\"owner\",\"entity_type\":\"ai_conversation\",\"entity_id\":1,\"provider\":\"intelligentsia\",\"link_count\":1}",
+      "created_at": "2026-09-07T03:57:58.880Z"
+    }
+  ],
   "intents": [],
   "contacts": [],
   "community_users": [
     {
       "id": 1,
+      "owner_uid": "",
       "session_id": "self_test_session",
       "email": "tester@example.com",
       "name": "Tester",
@@ -21,8 +90,8 @@
       "skill_level": "Early beginner",
       "repo_interest": "HACKCLUB",
       "source": "self-test",
-      "created_at": "2026-04-24T17:48:53.640Z",
-      "updated_at": "2026-04-24T17:48:53.697Z"
+      "created_at": "2026-09-07T03:57:58.884Z",
+      "updated_at": "2026-09-07T03:57:58.927Z"
     }
   ],
   "onboarding_answers": [
@@ -34,8 +103,8 @@
       "question_label": "What field or domain are you coming from?",
       "answer_text": "education",
       "page": "/docs/index.html",
-      "created_at": "2026-04-24T17:48:53.663Z",
-      "updated_at": "2026-04-24T17:48:53.663Z"
+      "created_at": "2026-09-07T03:57:58.886Z",
+      "updated_at": "2026-09-07T03:57:58.886Z"
     },
     {
       "id": 2,
@@ -45,8 +114,8 @@
       "question_label": "What email should we use to follow up with you?",
       "answer_text": "tester@example.com",
       "page": "/docs/index.html",
-      "created_at": "2026-04-24T17:48:53.676Z",
-      "updated_at": "2026-04-24T17:48:53.676Z"
+      "created_at": "2026-09-07T03:57:58.896Z",
+      "updated_at": "2026-09-07T03:57:58.896Z"
     },
     {
       "id": 3,
@@ -56,8 +125,8 @@
       "question_label": "What should we call you?",
       "answer_text": "Tester",
       "page": "/docs/index.html",
-      "created_at": "2026-04-24T17:48:53.683Z",
-      "updated_at": "2026-04-24T17:48:53.683Z"
+      "created_at": "2026-09-07T03:57:58.904Z",
+      "updated_at": "2026-09-07T03:57:58.904Z"
     },
     {
       "id": 4,
@@ -67,8 +136,8 @@
       "question_label": "What do you want right now?",
       "answer_text": "Join a project",
       "page": "/docs/index.html",
-      "created_at": "2026-04-24T17:48:53.688Z",
-      "updated_at": "2026-04-24T17:48:53.688Z"
+      "created_at": "2026-09-07T03:57:58.911Z",
+      "updated_at": "2026-09-07T03:57:58.911Z"
     },
     {
       "id": 5,
@@ -78,8 +147,8 @@
       "question_label": "How would you describe your current level?",
       "answer_text": "Early beginner",
       "page": "/docs/index.html",
-      "created_at": "2026-04-24T17:48:53.690Z",
-      "updated_at": "2026-04-24T17:48:53.690Z"
+      "created_at": "2026-09-07T03:57:58.917Z",
+      "updated_at": "2026-09-07T03:57:58.917Z"
     },
     {
       "id": 6,
@@ -89,8 +158,8 @@
       "question_label": "Which repo or path feels closest to what you need?",
       "answer_text": "HACKCLUB",
       "page": "/docs/index.html",
-      "created_at": "2026-04-24T17:48:53.695Z",
-      "updated_at": "2026-04-24T17:48:53.695Z"
+      "created_at": "2026-09-07T03:57:58.923Z",
+      "updated_at": "2026-09-07T03:57:58.923Z"
     },
     {
       "id": 7,
@@ -100,8 +169,8 @@
       "question_label": "What are you trying to achieve, or what do you need help with first?",
       "answer_text": "I want to work on automation and maybe help with task manager.",
       "page": "/docs/index.html",
-      "created_at": "2026-04-24T17:48:53.698Z",
-      "updated_at": "2026-04-24T17:48:53.698Z"
+      "created_at": "2026-09-07T03:57:58.929Z",
+      "updated_at": "2026-09-07T03:57:58.929Z"
     }
   ],
   "user_questions": [
@@ -112,7 +181,136 @@
       "question_text": "I want to work on automation and maybe help with task manager.",
       "answer_summary": "Best first move: start with Join Discord. For your situation, the most relevant working area looks like Tech Community by EruditeWBT -> docs/ and community_guides/. Learn from docs/index.html for the platform overview and docs/learn.html to choose a learning path first, then ask for access if you need to go deeper into private build lanes. If you want to work on Task Manager, start around task_manager/lib and task_manager/functions and review capability.md and ARCHITECTURE_GUIDE.md.",
       "page": "/docs/index.html",
-      "created_at": "2026-04-24T17:48:53.700Z"
+      "created_at": "2026-09-07T03:57:58.933Z"
+    }
+  ],
+  "service_requests": [
+    {
+      "id": 1,
+      "owner_uid": "self-test-user-1",
+      "type": "tutor",
+      "title": "Need help planning my sprint",
+      "description": "I need a working roadmap and project plan.",
+      "priority": "high",
+      "status": "SUBMITTED",
+      "payment_link_id": null,
+      "payment_id": null,
+      "conversation_id": "",
+      "assigned_to_uid": "",
+      "requested_at": "2026-09-07T03:57:58.847Z",
+      "updated_at": "2026-09-07T03:57:58.848Z",
+      "completed_at": null,
+      "idempotency_key": null
+    }
+  ],
+  "payment_links": [
+    {
+      "id": 1,
+      "public_slug": "tutor-mtqpmxmw",
+      "creator_uid": "self-test-user-1",
+      "service_type": "tutor",
+      "title": "One hour tutoring session",
+      "description": "Single mentoring session for project planning.",
+      "amount": 25,
+      "currency": "USD",
+      "recipient_label": "EruditeWBT",
+      "expires_at": "2026-09-08T03:57:58.854Z",
+      "status": "CREATED",
+      "share_url": "https://eruditewbt.github.io/Tech_Community_by_EruditeWBT/payment.html?slug=tutor-mtqpmxmw",
+      "creation_receipt_id": 1,
+      "idempotency_key": null,
+      "created_at": "2026-09-07T03:57:58.856Z",
+      "updated_at": "2026-09-07T03:57:58.861Z"
+    }
+  ],
+  "payments": [
+    {
+      "id": 1,
+      "payment_link_id": 1,
+      "payer_uid": "self-test-user-1",
+      "creator_uid": "self-test-user-1",
+      "provider": "manual",
+      "provider_transaction_id": "",
+      "provider_reference": "self-test-transfer",
+      "amount": 25,
+      "currency": "USD",
+      "status": "PAYMENT_PENDING",
+      "idempotency_key": "self-test-proof-key",
+      "initiated_at": "2026-09-07T03:57:58.866Z",
+      "created_at": "2026-09-07T03:57:58.866Z",
+      "updated_at": "2026-09-07T03:57:58.866Z"
+    }
+  ],
+  "payment_proofs": [
+    {
+      "id": 1,
+      "payment_id": 1,
+      "payer_uid": "self-test-user-1",
+      "proof_reference": "self-test-proof",
+      "proof_note": "Proof idempotency check.",
+      "object_key": "",
+      "idempotency_key": "self-test-proof-key",
+      "status": "PENDING_REVIEW",
+      "created_at": "2026-09-07T03:57:58.867Z"
+    }
+  ],
+  "receipts": [
+    {
+      "id": 1,
+      "receipt_number": "RCP-MTQPMXMZ-U80JXN",
+      "owner_uid": "self-test-user-1",
+      "type": "PAYMENT_LINK_CREATED",
+      "entity_type": "payment_link",
+      "entity_id": 1,
+      "summary": "Payment link created for One hour tutoring session (USD 25).",
+      "status": "PENDING",
+      "amount": 25,
+      "currency": "USD",
+      "verification_state": "LINK_CREATED_NOT_PAYMENT_PROOF",
+      "payload_json": "{\"paymentLinkId\":1,\"publicSlug\":\"tutor-mtqpmxmw\",\"shareUrl\":\"https://eruditewbt.github.io/Tech_Community_by_EruditeWBT/payment.html?slug=tutor-mtqpmxmw\",\"creatorUid\":\"self-test-user-1\",\"serviceType\":\"tutor\",\"title\":\"One hour tutoring session\",\"description\":\"Single mentoring session for project planning.\"}",
+      "qr_code": "",
+      "created_at": "2026-09-07T03:57:58.859Z"
+    },
+    {
+      "id": 2,
+      "receipt_number": "RCP-MTQPMXN9-4G4E3U",
+      "owner_uid": "self-test-user-1",
+      "type": "PAYMENT_PROOF_SUBMITTED",
+      "entity_type": "payment",
+      "entity_id": 1,
+      "summary": "Payment proof submitted for One hour tutoring session.",
+      "status": "PENDING",
+      "amount": 25,
+      "currency": "USD",
+      "verification_state": "PENDING_OPERATOR_REVIEW",
+      "payload_json": "{\"paymentId\":1,\"paymentLinkId\":1,\"proofId\":1,\"publicSlug\":\"tutor-mtqpmxmw\"}",
+      "qr_code": "",
+      "created_at": "2026-09-07T03:57:58.869Z"
+    }
+  ],
+  "ai_conversations": [
+    {
+      "id": 1,
+      "owner_uid": "self-test-user-1",
+      "title": "Self-test conversation",
+      "purpose": "Validate bounded AI persistence",
+      "status": "OPEN",
+      "consent_flags": "",
+      "provider": "intelligentsia",
+      "metadata_json": "{\"contextLinks\":[{\"url\":\"https://example.com/project\",\"title\":\"Project context\",\"excerpt\":\"Public project context.\"}]}",
+      "created_at": "2026-09-07T03:57:58.875Z",
+      "updated_at": "2026-09-07T03:57:58.875Z"
+    }
+  ],
+  "ai_messages": [
+    {
+      "id": 1,
+      "conversation_id": 1,
+      "role": "user",
+      "content": "Help me choose the next small project step.",
+      "context_links": "[{\"url\":\"https://example.com/project\",\"title\":\"Project context\",\"excerpt\":\"Public project context.\"}]",
+      "provider_request_id": "",
+      "created_at": "2026-09-07T03:57:58.877Z"
     }
   ]
 }

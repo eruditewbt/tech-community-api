@@ -44,7 +44,8 @@ function resolvedOrigin(event) {
 function corsHeaders(event) {
   return {
     "access-control-allow-origin": resolvedOrigin(event),
-    "access-control-allow-headers": "Content-Type, Authorization, X-Admin-Token",
+    "access-control-allow-headers":
+      "Content-Type, Authorization, X-Admin-Token, Idempotency-Key, X-ConnectCrypt-Project",
     "access-control-allow-methods": "GET, POST, OPTIONS",
     "access-control-max-age": "86400",
     vary: "Origin",
@@ -109,9 +110,12 @@ function withErrorBoundary(handler) {
         "Internal server error.",
         500,
         {
-          detail: process.env.NODE_ENV === "development" ? String(err && err.message) : undefined,
+          detail:
+            process.env.NODE_ENV === "development"
+              ? String(err && err.message)
+              : undefined,
         },
-        event
+        event,
       );
     }
   };
@@ -126,7 +130,15 @@ function getAdminToken(event) {
 
 function requireAdmin(event) {
   if (!ADMIN_TOKEN) {
-    return { ok: false, response: error("Admin token is not configured on the server.", 500, {}, event) };
+    return {
+      ok: false,
+      response: error(
+        "Admin token is not configured on the server.",
+        500,
+        {},
+        event,
+      ),
+    };
   }
   const token = getAdminToken(event);
   if (!token || token !== ADMIN_TOKEN) {
@@ -138,7 +150,10 @@ function requireAdmin(event) {
 function methodOf(event) {
   return (
     (event && event.httpMethod) ||
-    (event && event.requestContext && event.requestContext.http && event.requestContext.http.method) ||
+    (event &&
+      event.requestContext &&
+      event.requestContext.http &&
+      event.requestContext.http.method) ||
     "GET"
   ).toUpperCase();
 }

@@ -1,7 +1,17 @@
 "use strict";
 
-const { json, handleOptions, requireAdmin, withErrorBoundary } = require("../../src/http");
-const { listRecent, getCounts, listCommunityUsersDetailed } = require("../../src/db");
+const {
+  json,
+  handleOptions,
+  requireAdmin,
+  withErrorBoundary,
+} = require("../../src/http");
+const {
+  listRecent,
+  getCounts,
+  listCommunityUsersDetailed,
+  listPendingPayments,
+} = require("../../src/db");
 const { buildLiveData } = require("../../src/live-data");
 
 exports.handler = withErrorBoundary(async (event) => {
@@ -12,21 +22,26 @@ exports.handler = withErrorBoundary(async (event) => {
   if (!auth.ok) return auth.response;
 
   const live = buildLiveData();
-  return json({
-    ok: true,
-    stats: {
-      activeProjects: live.activeProjects,
-      openRoles: live.openRoles,
-      currentSprint: live.currentSprint,
-      ideasInVoting: live.ideasInVoting,
-      proofCount: Array.isArray(live.proofFeed) ? live.proofFeed.length : 0,
-      lastSync: live.updatedAt,
-      dbCounts: getCounts(),
+  return json(
+    {
+      ok: true,
+      stats: {
+        activeProjects: live.activeProjects,
+        openRoles: live.openRoles,
+        currentSprint: live.currentSprint,
+        ideasInVoting: live.ideasInVoting,
+        proofCount: Array.isArray(live.proofFeed) ? live.proofFeed.length : 0,
+        lastSync: live.updatedAt,
+        dbCounts: getCounts(),
+      },
+      proofFeed: live.proofFeed || [],
+      activities: listRecent("activities", 20),
+      intents: listRecent("intents", 20),
+      contacts: listRecent("contacts", 20),
+      communityUsers: listCommunityUsersDetailed(20),
+      pendingPayments: listPendingPayments(),
     },
-    proofFeed: live.proofFeed || [],
-    activities: listRecent("activities", 20),
-    intents: listRecent("intents", 20),
-    contacts: listRecent("contacts", 20),
-    communityUsers: listCommunityUsersDetailed(20),
-  }, 200, event);
+    200,
+    event,
+  );
 });
